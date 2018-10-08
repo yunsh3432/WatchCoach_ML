@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-#Russell Lucas
+
 cap = cv2.VideoCapture(0)
 count = 0
 coordinates = []
