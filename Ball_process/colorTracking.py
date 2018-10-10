@@ -15,21 +15,21 @@ def centroidCalc():
     x3avg = 0
     y3avg = 0
 
-    for x in range (0,(len(coordinates)/3)-1):
+    for x in range (0,int(len(coordinates)/3)-1):
         x1avg = x1avg + coordinates[x][0]
         y1avg = y1avg + coordinates[x][1]
     x1avg = x1avg / (len(coordinates)/3)  
     y1avg = y1avg / (len(coordinates)/3)    
     centroids[0] = (x1avg, y1avg) 
     
-    for y in range (( len(coordinates)/3), (len(coordinates) - (len(coordinates)/3)-1) ):
+    for y in range (int( len(coordinates)/3), int(len(coordinates) - int(len(coordinates)/3)-1) ):
         x2avg = x2avg + coordinates[y][0]
         y2avg = y2avg + coordinates[y][1]
     x2avg = x2avg / (len(coordinates)/3)  
     y2avg = y2avg / (len(coordinates)/3)     
     centroids[1] = (x2avg, y2avg) 
 
-    for z in range ( (len(coordinates) - (len(coordinates)/3)) , (len(coordinates)-1) ):
+    for z in range ( int(len(coordinates) - int(len(coordinates)/3)) , int(len(coordinates)-1) ):
         x3avg = x3avg + coordinates[z][0]
         y3avg = y3avg + coordinates[z][1]
     x3avg = x3avg / (len(coordinates)/3)  
@@ -69,7 +69,7 @@ while(1):
     closing = cv2.dilate(closing,kernel, iterations = 2)
     closing = cv2.erode(closing,kernel, iterations = 4)
 
-    contours, hierarchy = cv2.findContours(closing,1,2)
+    _, contours, hierarchy = cv2.findContours(closing,1,2)
    
     try:
         (x,y),radius = cv2.minEnclosingCircle(contours[0])
